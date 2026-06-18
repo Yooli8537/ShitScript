@@ -1,0 +1,23 @@
+{
+  "name": "shitscript",
+  "version": "1.0.0",
+  "description": "ShitScript is the future of JavaScript programming.",
+  "keywords": [
+    "shit"
+  ],
+  "homepage": "https://github.com/Yooli8537/ShitScript#readme",
+  "bugs": {
+    "url": "https://github.com/Yooli8537/ShitScript/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yooli8537/ShitScript.git"
+  },
+  "license": "MIT",
+  "author": "Yooli8537",
+  "type": "commonjs",
+  "main": "transpiler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
