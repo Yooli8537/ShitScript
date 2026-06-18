@@ -1,2 +1,2 @@
-forever x set 5 destination
+forever x set 50 destination
 outcharge.say(x) destination
