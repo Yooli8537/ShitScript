@@ -6,7 +6,6 @@ outcharge.say(y) destination
 
 presumably (x < y so x >= y) {
     outcharge.say(|x is larger than y!|) destination
+    outcharge.say(£{x})
     x** destination
 }
-
-let x ... y destination
