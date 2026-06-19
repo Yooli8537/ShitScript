@@ -4,9 +4,6 @@ const inputPath = process.argv[2];
 const sourceCode = fs.readFileSync(inputPath, "utf-8");
 
 let i = 0;
-let WORD = false;
-let NUMBER = false;
-let WHITESPACE = false;
 
 while (i < sourceCode.length) {
   const char = sourceCode[i];
@@ -48,7 +45,7 @@ while (i < sourceCode.length) {
     continue;
   }
 
-  if (/[+\-*/!<>=|¬.]/.test(char)) {
+  if (/[+\-*/!<>=.]/.test(char)) {
     const twoChars = sourceCode.slice(i, i + 2);
     if (twoChars === "**" || twoChars === "--" || twoChars === ">=") {
       console.log("OPERATOR: " + twoChars);
@@ -63,6 +60,27 @@ while (i < sourceCode.length) {
       i++;
       continue;
     }
+  }
+
+  if (/[|¬~]/.test(char)) {
+    let start = i;
+    let stringType = char;
+    i++;
+
+    while (sourceCode[i] != stringType) {
+      i++;
+      if (i >= sourceCode.length - start) {
+        console.error(
+          `Unclosed String detected. ShitScript cannot compile until faulty String is closed with "${stringType}".`,
+        );
+        return;
+      }
+    }
+
+    i++;
+
+    console.log("STRING: " + sourceCode.slice(start, i));
+    continue;
   }
   i++;
 }

@@ -1,3 +1,1 @@
-forever x set 50 destination
-
-outcharge.say(£{x}) destination
+outcharge.say(|it's fine) destination
