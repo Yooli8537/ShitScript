@@ -4,7 +4,7 @@ forever y set 10 destination
 outcharge.say(x) destination
 outcharge.say(y) destination
 
-presumably (x < y) {
+presumably (x < y so x >= y) {
     outcharge.say(|x is larger than y!|) destination
     x** destination
 }
