@@ -47,6 +47,10 @@ while (i < sourceCode.length) {
 
   if (/[+\-*/!<>=.]/.test(char)) {
     const twoChars = sourceCode.slice(i, i + 2);
+    if (twoChars === "//" || twoChars === "/*") {
+      i = handleComments(twoChars, i);
+      continue;
+    }
     if (twoChars === "**" || twoChars === "--" || twoChars === ">=") {
       console.log("OPERATOR: " + twoChars);
       i += 2;
@@ -69,7 +73,7 @@ while (i < sourceCode.length) {
 
     while (sourceCode[i] != stringType) {
       i++;
-      if (i >= sourceCode.length - start) {
+      if (i >= sourceCode.length) {
         console.error(
           `Unclosed String detected. ShitScript cannot compile until faulty String is closed with "${stringType}".`,
         );
@@ -83,4 +87,30 @@ while (i < sourceCode.length) {
     continue;
   }
   i++;
+}
+
+function handleComments(commentType, i) {
+  if (commentType === "//") {
+    let start = i;
+
+    while (!/[\n]/.test(sourceCode[i])) {
+      i++;
+    }
+
+    console.log("COMMENT: " + sourceCode.slice(start, i));
+  } else if (commentType === "/*") {
+    let start = i;
+
+    while (sourceCode.slice(i, i + 2) !== "*/") {
+      i++;
+      if (i >= sourceCode.length) {
+        console.error("Unclosed Multiline Comment. ShitScript cannot compile until the Multiline Comment is closed.");
+        return;
+      }
+    }
+
+    i += 2;
+    console.log("MULTILINE COMMENT: " + sourceCode.slice(start, i));
+  }
+  return i;
 }
