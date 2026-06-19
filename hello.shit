@@ -1,2 +1,10 @@
 forever x set 50 destination
+forever y set 10 destination
+
 outcharge.say(x) destination
+outcharge.say(y) destination
+
+presumably (x < y) {
+    outcharge.say(|x is larger than y!|) destination
+    x** destination
+}
