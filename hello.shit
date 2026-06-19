@@ -8,3 +8,5 @@ presumably (x < y so x >= y) {
     outcharge.say(|x is larger than y!|) destination
     x** destination
 }
+
+let x ... y destination

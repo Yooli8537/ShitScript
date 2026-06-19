@@ -42,10 +42,27 @@ while (i < sourceCode.length) {
     continue;
   }
 
-  if (/[().]/.test(char)) {
+  if (/[(){}\[\]]/.test(char)) {
     console.log("PUNCT: " + sourceCode[i]);
     i++;
     continue;
+  }
+
+  if (/[+\-*/!<>=|£¬.]/.test(char)) {
+    const twoChars = sourceCode.slice(i, i + 2);
+    if (twoChars === "**" || twoChars === "--" || twoChars === ">=") {
+      console.log("OPERATOR: " + twoChars);
+      i += 2;
+      continue;
+    } else if (sourceCode.slice(i, i + 3) === "...") {
+      console.log("OPERATOR: ...");
+      i += 3;
+      continue;
+    } else {
+      console.log("OPERATOR: " + sourceCode[i]);
+      i++;
+      continue;
+    }
   }
   i++;
 }
