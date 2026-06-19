@@ -48,7 +48,7 @@ while (i < sourceCode.length) {
     continue;
   }
 
-  if (/[+\-*/!<>=|£¬.]/.test(char)) {
+  if (/[+\-*/!<>=|¬.]/.test(char)) {
     const twoChars = sourceCode.slice(i, i + 2);
     if (twoChars === "**" || twoChars === "--" || twoChars === ">=") {
       console.log("OPERATOR: " + twoChars);
