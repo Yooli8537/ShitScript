@@ -11,7 +11,7 @@ while (i < sourceCode.length) {
   if (/[a-zA-Z]/.test(char)) {
     let start = i;
 
-    while (/[a-zA-Z]/.test(sourceCode[i])) {
+    while (i < sourceCode.length && /[a-zA-Z]/.test(sourceCode[i])) {
       i++;
     }
 
@@ -22,7 +22,7 @@ while (i < sourceCode.length) {
   if (/[0-9]/.test(char)) {
     let start = i;
 
-    while (/[0-9]/.test(sourceCode[i])) {
+    while (i < sourceCode.length && /[0-9]/.test(sourceCode[i])) {
       i++;
     }
 
